@@ -380,3 +380,160 @@ int main() {
 - Useful for grouping related logic
 - Inner class is independent of the outer class objects
 - Access control can be managed using public / private
+
+## 8️⃣ The Scope Resolution Operator (::)
+
+The **scope resolution operator** (::) in C++ is used to:
+
+1. Access **global variables/functions** when they are hidden by local ones.
+2. Define **class functions outside the class**.
+3. Access **static class members or namespaces**.
+
+**Example 1 – Accessing Global Variable**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int num = 10;  // global
+
+int main() {
+    int num = 5;   // local
+    cout << ::num; // Output: 10 (global)
+}
+```
+
+**Example 2 – Defining Member Function Outside Class**
+
+```cpp
+class Student {
+    int roll;
+public:
+    void setRoll(int r);
+    void show();
+};
+
+void Student::setRoll(int r) { roll = r; }  // scope resolution used here
+void Student::show() { cout << roll; }
+```
+
+✅ Key Points:
+
+- :: identifies which scope an identifier belongs to.
+- Common uses:
+  - To refer to global variable if local one hides it.
+  - To define class member functions outside the class body.
+  - To access static class members (e.g., ClassName::count).
+
+## 9️⃣ Passing Objects to Functions
+
+Objects can be passed to functions just like basic variables —
+either **by value**, **by reference**, or **by address**.
+
+### 🔸 (a) Pass by Value
+
+- A copy of the object is sent.
+- Changes inside the function do not affect the original.
+
+```cpp
+class Sample {
+    int x;
+public:
+    Sample(int a) { x = a; }
+    void display() { cout << x; }
+    void modify(Sample s) { s.x += 10; }
+};
+```
+
+### 🔸 (b) Pass by Reference
+
+- The function gets direct access to the original object.
+- Any changes affect the actual object.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Number {
+public:
+    int n;
+    Number(int x) { n = x; }
+    void show() { cout << n << endl; }
+};
+
+void update(Number &obj) {
+    obj.n += 5;   // modifies original
+}
+
+int main() {
+    Number ob(10);
+    update(ob);
+    ob.show();    // Output: 15
+}
+```
+
+✅ Key Points:
+
+- Use & for reference passing.
+- Efficient (no object copy).
+- Recommended when objects are large.
+
+## 1️⃣0️⃣ Returning Objects from Functions
+
+A function in C++ can return an object just like it returns basic data types.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Sum {
+public:
+    int a;
+    Sum(int x = 0) { a = x; }
+    Sum add(Sum obj) {
+        Sum temp;
+        temp.a = a + obj.a;
+        return temp;   // returning object
+    }
+};
+
+int main() {
+    Sum s1(5), s2(10), s3;
+    s3 = s1.add(s2);
+    cout << s3.a;   // Output: 15
+}
+```
+
+✅ Key Points:
+
+- Object returned by value → copy constructor may be used.
+- Used in operator overloading and method chaining.
+- Return type must match the class name.
+
+## 1️⃣1️⃣ Object Assignment
+
+Assigning one object to another of the same class copies all **data members**.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Point {
+    int x, y;
+public:
+    Point(int a, int b) { x = a; y = b; }
+    void show() { cout << x << "," << y << endl; }
+};
+
+int main() {
+    Point p1(3, 4);
+    Point p2 = p1;  // Object assignment (copy)
+    p2.show();      // Output: 3,4
+}
+```
+
+✅ Key Points:
+
+- Performs member-wise copy by default.
+- If class has pointer members, you must define a copy constructor or assignment operator to avoid shallow copy issues.
+- Common in expressions like `obj2 = obj1;`.
