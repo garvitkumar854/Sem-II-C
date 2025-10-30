@@ -18,6 +18,211 @@ class Derived : access_specifier Base {
 - Enables hierarchical class structures.
 - Supports polymorphism.
 
+### Types of Inheritance
+
+C++ supports five main types of inheritance:
+| Type | Diagram | Description |
+| ---------------- | ------------ | --------------------------------------------------------- |
+| 1️⃣ Single | A → B | One base class, one derived class |
+| 2️⃣ Multiple | A,B → C | One derived class inherits from multiple base classes |
+| 3️⃣ Multilevel | A → B → C | Derived class becomes base for another class |
+| 4️⃣ Hierarchical | A → B, A → C | Multiple derived classes inherit from one base class |
+| 5️⃣ Hybrid | Combination | Mixture of two or more types (like multiple + multilevel) |
+
+<img src = "https://www.w3schools.in/wp-content/uploads/2014/07/inheritanc-cpp.jpg" width=700px>
+
+#### Single Inheritance
+
+One derived class inherits from one base class.
+
+**Example:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Parent {
+public:
+    void showParent() { cout << "This is Parent class\n"; }
+};
+
+class Child : public Parent {
+public:
+    void showChild() { cout << "This is Child class\n"; }
+};
+
+int main() {
+    Child c;
+    c.showParent();
+    c.showChild();
+}
+```
+
+**✅ Output:**
+
+```python
+This is Parent class
+This is Child class
+```
+
+#### Multiple Inheritance
+
+One derived class inherits from two or more base classes.
+
+**Example:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    void showA() { cout << "Class A\n"; }
+};
+
+class B {
+public:
+    void showB() { cout << "Class B\n"; }
+};
+
+// Derived from both A and B
+class C : public A, public B {
+public:
+    void showC() { cout << "Class C\n"; }
+};
+
+int main() {
+    C obj;
+    obj.showA();
+    obj.showB();
+    obj.showC();
+}
+```
+
+**✅ Output:**
+
+```vbnet
+Class A
+Class B
+Class C
+```
+
+#### Multilevel Inheritance
+
+A derived class acts as a base for another derived class.
+
+**Example:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    void showA() { cout << "Base Class A\n"; }
+};
+
+class B : public A {
+public:
+    void showB() { cout << "Derived Class B\n"; }
+};
+
+class C : public B {
+public:
+    void showC() { cout << "Derived Class C\n"; }
+};
+
+int main() {
+    C obj;
+    obj.showA();
+    obj.showB();
+    obj.showC();
+}
+```
+
+**✅ Output:**
+
+```vbnet
+Base Class A
+Derived Class B
+Derived Class C
+```
+
+#### Hierarchical Inheritance
+
+One base class is inherited by multiple derived classes.
+
+**Example:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    void eat() { cout << "Eating...\n"; }
+};
+
+class Dog : public Animal {
+public:
+    void bark() { cout << "Barking...\n"; }
+};
+
+class Cat : public Animal {
+public:
+    void meow() { cout << "Meowing...\n"; }
+};
+
+int main() {
+    Dog d;
+    d.eat();
+    d.bark();
+
+    Cat c;
+    c.eat();
+    c.meow();
+}
+```
+
+**✅ Output:**
+
+```txt
+Eating...
+Barking...
+Eating...
+Meowing...
+```
+
+#### Hybrid Inheritance
+
+Combination of two or more types (e.g. multiple + multilevel).<br>
+This often leads to **ambiguity** if both `B` and `C` inherit from the same base `A` and then `D` inherits from both `B` and `C`.
+To solve this, we use virtual base classes.
+
+**Example:**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class A {
+public:
+    void showA() { cout << "Class A\n"; }
+};
+
+class B : virtual public A { };
+class C : virtual public A { };
+
+class D : public B, public C { };
+
+int main() {
+    D obj;
+    obj.showA();   // No ambiguity due to virtual inheritance
+}
+
+// Output: Class A
+```
+
 ## 2️⃣ – Base-Class Access Control
 
 Access specifiers control how base class members are inherited.
