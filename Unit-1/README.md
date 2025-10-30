@@ -29,7 +29,7 @@ OOP = Programming paradigm based on objects (real-world entities) that contain d
   🔹 Object
 - An instance of a class.
 - Has memory allocated when created.
-  Syntax Example:
+  **Example:**
 
 ```cpp
 #include <iostream>
@@ -71,7 +71,7 @@ Encapsulation binds data and functions into a class, restricting access using ac
 → Keep data private, expose through public functions.
 <br>
 
-Example:
+**Example:**
 
 ```cpp
 class Account {
@@ -100,7 +100,7 @@ Two types:
   - Virtual functions
   - Function overriding (Inheritance)
 
-Example:
+**Example:**
 
 ```cpp
 class Math {
@@ -117,13 +117,13 @@ Inheritance allows a class to acquire properties and behaviors from another clas
 Allows a **class to use properties of another.**
 <br>
 
-Syntax
+**Syntax:**
 
 ```cpp
 class Derived : public Base { };
 ```
 
-Example:
+**Example:**
 
 ```cpp
 class A {
@@ -165,7 +165,9 @@ int main() {
 #### Definition:
 
 A function prototype tells the compiler the name, return type, and parameter types before the function is actually defined.
-<br>Syntax
+<br>
+
+**Syntax:**
 
 ```cpp
 return_type function_name(parameter_list);
