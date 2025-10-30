@@ -65,8 +65,12 @@ int main() {
 ## 3️⃣ Encapsulation
 
 Encapsulation = **Data hiding** + **Data protection**
+<br>
+Encapsulation binds data and functions into a class, restricting access using access specifiers to protect internal object state
+<br>
 → Keep data private, expose through public functions.
 <br>
+
 Example:
 
 ```cpp
@@ -81,18 +85,20 @@ public:
 
 ## 4️⃣ Polymorphism
 
-Poly = many, morph = form → Same function behaves differently
+Poly = many, morph = form → Same function behaves differently.
+<br>
+Polymorphism enables functions or methods to behave differently based on object type, supporting flexibility through overloading and overriding
+<br>
 Two types:
 
-1. Compile-time (Static)
+- Compile-time (Static)
 
-- unction Overloading
-- perator Overloading
+  - Function Overloading
+  - perator Overloading
 
-2. Run-time (Dynamic)
-
-- Virtual functions
-- Function overriding (Inheritance)
+- Run-time (Dynamic)
+  - Virtual functions
+  - Function overriding (Inheritance)
 
 Example:
 
@@ -106,6 +112,8 @@ public:
 
 ## 5️⃣ Inheritance (Intro)
 
+Inheritance allows a class to acquire properties and behaviors from another class, promoting code reuse and hierarchical relationships.
+<br>
 Allows a **class to use properties of another.**
 <br>
 
