@@ -501,3 +501,11 @@ int main() {
 - Declared using keyword virtual before public.
 - Ensures only one copy of base class members exists.
 - Prevents data duplication in multiple inheritance.
+
+## What Is Function Overriding?
+Function overriding is a feature of object-oriented programming in C++ where a derived class redefines a base class method using the same function signature (name, return type, and parameters). This allows the derived class to customize or extend the behavior of the base class method.
+
+### 🔑 Key Conditions for Overriding
+- Virtual keyword: The base class method must be marked with virtual.
+- Same signature: The derived class method must match the base class method's signature exactly.
+- Inheritance: Must occur within an inheritance hierarchy.
