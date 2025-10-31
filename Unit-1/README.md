@@ -94,7 +94,7 @@ Two types:
 - Compile-time (Static)
 
   - Function Overloading
-  - perator Overloading
+  - Operator Overloading
 
 - Run-time (Dynamic)
   - Virtual functions
